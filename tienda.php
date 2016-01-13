@@ -10,14 +10,7 @@
 		}
 		else $pagina=0;
 		
-		$con = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
-		if (!$con) {
-		  die('No se pudo conectar a la base de datos: ' . mysqli_error($con));
-		}
-
-		if (!$con->set_charset("utf8")) {
-			printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
-		}
+		$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 		
 		//Se obtienen los datos del producto
 		$sql="SELECT * FROM categorias WHERE nombre='".$categoria."'";
@@ -37,14 +30,7 @@
 		
 
 		
-		$con = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
-		if (!$con) {
-		  die('No se pudo conectar a la base de datos: ' . mysqli_error($con));
-		}
-
-		if (!$con->set_charset("utf8")) {
-			printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
-		}
+		$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 		
 		//Se obtienen los datos del producto
 		$sql="SELECT * FROM productos WHERE categoria='".$categoria."'";
@@ -59,14 +45,7 @@
 		}
 		else $pagina=0;
 		
-		$con = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
-		if (!$con) {
-		  die('No se pudo conectar a la base de datos: ' . mysqli_error($con));
-		}
-
-		if (!$con->set_charset("utf8")) {
-			printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
-		}
+		$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 		
 		//Se obtienen los datos del producto
 		$sql="SELECT * FROM productos";
@@ -156,14 +135,7 @@
 	<li ><a href="tienda.php">Novedades</a></li>
     <?php
 	
-		$conCategorias = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
-		if (!$conCategorias) {
-		  die('No se pudo conectar a la base de datos: ' . mysqli_error($conCategorias));
-		}
-
-		if (!$conCategorias->set_charset("utf8")) {
-			printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
-		}
+		$conCategorias = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 		
 		//Se obtienen las categorías de productos
 		$sqlCategorias="SELECT nombre FROM categorias ORDER BY nombre ASC";
@@ -218,14 +190,7 @@
 			$result->data_seek($i);
 			$fila = $result->fetch_assoc();	
 			
-			$conB = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
-			if (!$conB) {
-			  die('No se pudo conectar a la base de datos: ' . mysqli_error($conB));
-			}
-
-			if (!$conB->set_charset("utf8")) {
-				printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
-			}
+			$conB = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 			
 			//Se obtiene la primera imagen del producto
 			$sqlB="SELECT * FROM imagen_producto WHERE nombreProducto='".$fila['nombre']."' LIMIT 1";
@@ -260,14 +225,7 @@
 			$result->data_seek($i);
 			$fila = $result->fetch_assoc();	
 			
-			$conB = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
-			if (!$conB) {
-			  die('No se pudo conectar a la base de datos: ' . mysqli_error($conB));
-			}
-
-			if (!$conB->set_charset("utf8")) {
-				printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
-			}
+			$conB = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 			
 			//Se obtiene la primera imagen del producto
 			$sqlB="SELECT * FROM imagen_producto WHERE nombreProducto='".$fila['nombre']."' LIMIT 1";

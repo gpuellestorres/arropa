@@ -7,15 +7,8 @@
 		$posicion=0;
 	}
 	//Se hace la conexion:
-	$con = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
-	//Se avisa si falla la conexion:
-	if ($con->connect_errno) {
-		echo "Falló la conexión con MySQL: (" . $con->connect_errno . ") " . $con->connect_error;
-	}
+	$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 	
-	if (!$con->set_charset("utf8")) {
-		printf("Error cargando el conjunto de caracteres utf8: %s\n", $con->error);
-	}
 	//Se hace la consulta
 	$sql="SELECT * FROM noticias ORDER BY fecha DESC";	
 	$result = mysqli_query($con,$sql);
