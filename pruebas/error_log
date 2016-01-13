@@ -1,0 +1,15 @@
+[10-Mar-2015 19:33:40 CST6CDT] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/arropaor/public_html/pruebas/noticias.php on line 122
+[10-Mar-2015 19:33:40 CST6CDT] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/arropaor/public_html/pruebas/noticias.php on line 135
+[10-Mar-2015 19:33:40 CST6CDT] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/arropaor/public_html/pruebas/noticias.php on line 158
+[10-Mar-2015 19:33:40 CST6CDT] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/arropaor/public_html/pruebas/noticias.php on line 171
+[10-Mar-2015 19:37:07 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/arropaor/public_html/pruebas/noticias.php on line 91
+[10-Mar-2015 19:39:09 CST6CDT] PHP Parse error:  syntax error, unexpected '.', expecting variable (T_VARIABLE) or '$' in /home/arropaor/public_html/pruebas/noticias.php on line 132
+[10-Mar-2015 20:31:20 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/arropaor/public_html/pruebas/noticias.php on line 91
+[11-Mar-2015 13:13:36 CST6CDT] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/arropaor/public_html/pruebas/noticia.php on line 112
+[11-Mar-2015 13:14:15 CST6CDT] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/arropaor/public_html/pruebas/noticia.php on line 112
+[11-Mar-2015 13:14:17 CST6CDT] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/arropaor/public_html/pruebas/noticia.php on line 112
+[11-Mar-2015 13:36:36 CST6CDT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/arropaor/public_html/pruebas/noticias.php on line 174
+[11-Mar-2015 13:41:18 CST6CDT] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/arropaor/public_html/pruebas/noticias.php on line 176
+[11-Mar-2015 17:46:16 CST6CDT] PHP Parse error:  syntax error, unexpected '$fila' (T_VARIABLE) in /home/arropaor/public_html/pruebas/noticias.php on line 151
+[11-Mar-2015 17:47:04 CST6CDT] PHP Parse error:  syntax error, unexpected end of file, expecting ';' in /home/arropaor/public_html/pruebas/noticias.php on line 100
+[11-Mar-2015 17:55:51 CST6CDT] PHP Parse error:  syntax error, unexpected end of file in /home/arropaor/public_html/pruebas/noticias.php on line 100

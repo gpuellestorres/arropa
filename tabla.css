@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.CSSTableGenerator {
+	margin:0px;padding:0px;
+	width:100%;
+	box-shadow: 10px 10px 5px #888888;
+	display:inline;
+	
+	
+}.CSSTableGenerator table{
+    border-collapse: collapse;
+        border-spacing: 0;
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+	border:1px solid #4c4c4c;
+
+}.CSSTableGenerator tr:hover td{
+	
+}
+.CSSTableGenerator tr:nth-child(odd){ ; }
+.CSSTableGenerator tr:nth-child(even)    { }.CSSTableGenerator td{
+	vertical-align:middle;
+	
+	
+	border:1px solid #4c4c4c;
+	border-width:0px 1px 1px 0px;
+	text-align:center;
+	padding:2%;
+	font-size:0.8em; 
+
+	color:#333333;
+}.CSSTableGenerator tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}.CSSTableGenerator tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}.CSSTableGenerator tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.CSSTableGenerator tr:first-child td{
+		background:#1d70b8;
+	background:#1d70b8;
+	background:#1d70b8;
+
+	background-color:#1d70b8;
+	border:0px solid #4c4c4c;
+	text-align:center;
+	border-width:0px 0px 1px 1px;
+	font-size:0.8em;
+	font-weight:bold;
+	color:#ffffff;
+}
+.CSSTableGenerator tr:first-child:hover td{
+
+}
+.CSSTableGenerator tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.CSSTableGenerator tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
