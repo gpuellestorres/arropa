@@ -59,6 +59,12 @@
 <link href="meanmenu.css" rel="stylesheet" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
 
+<style>
+  p {color:black;font-weight: normal;;margin-right: 0px; margin-left: 0px;margin-bottom: 20px;margin-top: 20px;}
+  b {color:black;font-weight: bold;}
+  i {color:black; font-style: italic;}
+</style>
+
 </head>
 <body>
 
@@ -132,7 +138,7 @@
           <?php echo 'Fecha '.$fecha;?></h8><br><br>
           
           <div class="fotonoticia"><img <?php echo 'src="/admin/'.$imagen.'"'; ?> alt="" width="60%" /></div><br><br>
-			<h8><?php echo $texto; ?><br>
+			<div style="color:black !important"><?php echo $texto; ?></div><br>
 <br/>
 			<a name="fb_share"type="button_count"></a>
           
@@ -152,15 +158,7 @@
 				$posicion=0;
 			}
 			//Se hace la conexion:
-			$con = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
-			//Se avisa si falla la conexion:
-			if ($con->connect_errno) {
-				echo "Falló la conexión con MySQL: (" . $con->connect_errno . ") " . $con->connect_error;
-			}
-			
-			if (!$con->set_charset("utf8")) {
-				printf("Error cargando el conjunto de caracteres utf8: %s\n", $con->error);
-			}
+			$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 			//Se hace la consulta
 			$sql="SELECT * FROM noticias WHERE nombre<>'".$titulo."' ORDER BY fecha DESC";	
 			$result = mysqli_query($con,$sql);
@@ -189,11 +187,13 @@
 						$fila = $result->fetch_assoc();
 						
 						$j=$i+1;
+
+            $nombreHTML = urlencode($fila["nombre"]);
 						
 						echo '<div id="color'.$j.'">
-						<div id="cajanoticiascolor"><h2><a id="enlaceNoticia" href="noticia.php?t='.$fila["nombre"].'"><span class="noticianegrita">'.$fila["nombre"].'</span></a></h2>
+						<div id="cajanoticiascolor"><h2><a id="enlaceNoticia" href="noticia.php?t='.$nombreHTML.'"><span class="noticianegrita">'.$fila["nombre"].'</span></a></h2>
 						<h14><span class="fechaitalic">Fecha '.$fila["fecha"].'</span></h14><br>
-						<h14><div class="parrafonoticia">'.substr($fila["texto"],0,200).'...'.'</div></h14>
+						<h14><div class="parrafonoticia">'.substr(strip_tags ($fila["texto"]),0,200).'...'.'</div></h14>
 						</div></div>';					
 					}			
 			?>

@@ -178,7 +178,7 @@
 						echo '<div id="color'.$j.'">
 						<div id="cajanoticiascolor"><h2><a id="enlaceNoticia" href="noticia.php?t='.$nombreHTML.'"><span class="noticianegrita">'.$fila["nombre"].'</span></a></h2>
 						<h14><span class="fechaitalic">Fecha '.$fila["fecha"].'</span></h14><br>
-						<div class="parrafonoticia"><h14>'.substr($fila["texto"],0,200).'...'.'</h14></div>
+						<div class="parrafonoticia"><h14>'.substr(strip_tags ($fila["texto"]),0,200).'...'.'</h14></div>
 						</div></div>';
 					}
 					mysqli_close($con);
