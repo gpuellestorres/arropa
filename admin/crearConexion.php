@@ -1,5 +1,5 @@
 <?php 
-	$con = new mysqli("localhost", "arropaor", "h0dFxwtrxBxVdW", "arropaor_bd");
+	$con = new mysqli("localhost", "arropaor", "conytorres", "arropaor_bd");
 		if (!$con) {
 		  die('No se pudo conectar a la base de datos: ' . mysqli_error($con));
 		}
