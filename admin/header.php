@@ -130,7 +130,7 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				
-				<li><a href="ventas.php">Registro de ventas</a></li>
+				<li><a href="/admin/ventas">Registro de ventas</a></li>
 
 				<?php
 

@@ -112,7 +112,7 @@
     <div class="h10class"><h10>Productos en su Carrito</h10></div>
     
     <div id="parrafotienda">
-  	<h11>Usted está a confirmar la compra de los siguientes productos. </h11> 
+  	<h11>Usted está a punto de confirmar la compra de los siguientes productos. </h11> 
     <br><br><br>
     <div class="CSSTableGenerator" >
                 <table >

@@ -54,7 +54,12 @@
 				{
 					$TotalVenta = 0;
 					
-					$cantidadPInt = (int)$cantidadProductos;					
+					$cantidadPInt = (int)$cantidadProductos;
+					//Generamos un número de ID de Venta Aleatorio:
+					$idAleatorio = rand(1,1000);
+					$idAleatorio = $idAleatorio *-1;
+
+
 					for($i=0;$i<$cantidadPInt;$i++){
 						
 						if($_COOKIE["producto".($i+1)]!=null){
@@ -78,10 +83,6 @@
 							}
 							
 							mysqli_close($con);
-
-							//Generamos un número de ID de Venta Aleatorio:
-							$idAleatorio = rand(1,1000);
-							$idAleatorio = $idAleatorio *-1;
 							
 							if((int)$cantidad>0 && $cantidad>=(int)$_COOKIE["cantidad".($i+1)]){
 
@@ -96,6 +97,8 @@
 									mysqli_close($conDetalle);
 								
 									$TotalVenta += (int)$_COOKIE["cantidad".($i+1)]*(int)$valor;
+									$IVA = $TotalVenta * 0.19;
+									$TOTAL = $TotalVenta + $IVA;
 							}
 						}
 						
@@ -109,7 +112,7 @@
 					$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 					
 					//Se obtienen los datos del producto
-					$sql="INSERT INTO ventas(url_pago, id_venta) VALUES('$url_pago', '$id_venta')";
+					$sql="INSERT INTO ventas(url_pago, id_venta, total) VALUES('$url_pago', '$id_venta', '$TOTAL')";
 									
 					$result = mysqli_query($con,$sql);
 
@@ -124,6 +127,8 @@
 				}
 			}
 
-		$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";	
-		$resultado = $con->query("INSERT INTO usuarios(nombre, apellido, direccion, ciudad, notas, correo, ventaID) VALUES('$nombre','$apellido','$direccion','$ciudad','$notas','$correo', '$ventaID')");
+			$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";	
+			$resultado = $con->query("INSERT INTO usuarios(nombre, apellido, direccion, ciudad, notas, correo, ventaID) VALUES('$nombre','$apellido','$direccion','$ciudad','$notas','$correo', '$nuevaIDVenta')");
+			mysqli_close($con);//*/
+
 ?>
