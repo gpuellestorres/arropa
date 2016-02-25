@@ -112,7 +112,7 @@
     <div class="h10class"><h10>Productos en su Carrito</h10></div>
     
     <div id="parrafotienda">
-  <h11>Suspendisse ut massa rhoncus, hendrerit mauris sed, luctus lacus. Duis auctor lacus nec lectus varius sollicitudin. Morbi posuere massa ut tortor commodo porta ut id elit. Aliquam sed malesuada libero. Suspendisse potenti. Phasellus in ante urna. </h11> 
+  	<h11>Estos son los productos que actualmente se encuentran en su carro de compras:</h11> 
     <br><br><br>
     <div class="CSSTableGenerator" >
                 <table >

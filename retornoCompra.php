@@ -1,59 +1,3 @@
-<?php
-
-	if($_GET["c"]!=null){
-	
-		$categoria = urldecode ($_GET["c"]);
-		
-		if($_GET["p"]!=null)
-		{
-			$pagina=$_GET["p"];
-		}
-		else $pagina=0;
-		
-		$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
-		
-		//Se obtienen los datos del producto
-		$sql="SELECT * FROM categorias WHERE nombre='".$categoria."'";
-						
-		$result = mysqli_query($con,$sql);
-		
-		if($result->num_rows==0){
-			mysqli_close($con);
-			header("location:tienda.php");
-		}
-		
-		$result->data_seek(0);
-		$fila = $result->fetch_assoc();	
-		$categoria = $fila["nombre"];
-		
-		mysqli_close($con);
-		
-
-		
-		$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
-		
-		//Se obtienen los datos del producto
-		$sql="SELECT * FROM productos WHERE categoria='".$categoria."' AND cantidad>'0'";
-						
-		$result = mysqli_query($con,$sql);
-	}
-	else
-	{
-		if($_GET["p"]!=null)
-		{
-			$pagina=$_GET["p"];
-		}
-		else $pagina=0;
-		
-		$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
-		
-		//Se obtienen los datos del producto
-		$sql="SELECT * FROM productos WHERE cantidad>'0'";
-						
-		$result = mysqli_query($con,$sql);
-	}
-?>
-
 <!doctype html>
 <html>
 <head>
@@ -64,7 +8,9 @@
 <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
 
 <meta charset="UTF-8">
-<title>ARROPA - Tienda</title>
+<title>ARROPA Chile</title>
+<link href="jquery-ui.css" rel="stylesheet">
+
 
 
 <link href="images/favicon_arropa.png" rel="shortcut icon">
@@ -72,10 +18,21 @@
 <link href="estilos.css" rel="stylesheet" type="text/css">
 
 <link href="meanmenu.css" rel="stylesheet" type="text/css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+
+<link href="jquery.bxslider.css" rel="stylesheet" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="jquery.bxslider.min.js"></script>
+  <script>
+      $(document).ready(function(){
+  $('.bxslider').bxSlider();
+});
+  </script>
+
+
+
 <?php include_once("analyticstracking.php") ?>
 </head>
-
 <body>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -86,10 +43,11 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<header> 
+
+	<header> 
 		
         <div class="wrap">
-        <div id="logo"><a href="https://www.arropa.org/index.php"><img class="margenlogo" src="images/logo.png" alt=""/></a></div>
+        <div id="logo"> <a href="https://www.arropa.org/index.php"><img class="margenlogo" src="images/logo.png" alt=""/></a></div>
 
  		<div id="rs"> <span class="navtexto"><h4>Síguenos:</h4></span>
         <a target="_blank" href="https://www.facebook.com/ArropaChile"><img src="images/rs_fb.png" alt=""/></a>
@@ -120,176 +78,13 @@
     </ul></div></div>
   
   </nav>
-  <div class="clearfix"></div>
-
-
-<div class="wrap">
-
-
-
-<div id="cajacolumnas2">
-
-	<aside class="tiendacol_izq">
-	<div class="tiendacol_izq1">
-    <h9><ul>
-	<li ><a href="tienda.php">Novedades</a></li>
-    <?php
-	
-		$conCategorias = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
-		
-		//Se obtienen las categorías de productos
-		$sqlCategorias="SELECT nombre FROM categorias ORDER BY nombre ASC";
-						
-		$resultCategorias = mysqli_query($conCategorias,$sqlCategorias);
-		
-		if($resultCategorias->num_rows==0){
-			mysqli_close($conCategorias);
-			header("location:tienda.php");
-		}
-		
-		for ($i = 0 ; $i <$resultCategorias->num_rows; $i++) {
-			$resultCategorias->data_seek($i);
-			$fila = $resultCategorias->fetch_assoc();	
-			
-			if($i<($resultCategorias->num_rows-1)){
-				echo '<div class="separadorcatalogo"></div>
-				  <li ><a href="tienda.php?c='.urlencode($fila["nombre"]).'">'.$fila["nombre"].'</a></li>';
-			}
-			else{
-				echo '<div class="separadorcatalogo"></div>
-				  <li ><a href="tienda.php?c='.urlencode($fila["nombre"]).'">'.$fila["nombre"].'</a></li>';
-			}
-		}
-		
-		mysqli_close($conCategorias);
-	
-	?>
-    </ul>
-	</h9>
-    </div>
-	<aside class="tiendacol_izq2"><img src="images/webpay.png" alt=""></aside>
-    </aside>
-    
-    
-    
-    <div id="tiendacol_der">
-	<?php
-		if($categoria!=null)
-		{
-			echo '<div class="h10class"><h10>'.$categoria.'</h10></div><br>';
-		}	
-		else{
-			echo '<div class="h10class"><h10>Novedades</h10></div><br>';
-		}
-	?>
-    
-    
-	<?php
-				
-		for ($i = (0 + $pagina*6); $i <$result->num_rows && $i<(3 + $pagina * 6); $i++) {
-			$result->data_seek($i);
-			$fila = $result->fetch_assoc();	
-			
-			$conB = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
-			
-			//Se obtiene la primera imagen del producto
-			$sqlB="SELECT * FROM imagen_producto WHERE nombreProducto='".$fila['nombre']."' LIMIT 1";
-							
-			$resultB = mysqli_query($conB,$sqlB);
-			
-			for ($j = 0; $j <$resultB->num_rows; $j++) {
-				$resultB->data_seek($j);
-				$filaB = $resultB->fetch_assoc();
-				
-				$imagen = $filaB["imagen"];
-			}
-			
-			mysqli_close($conB);
-			
-			$numero = $i%3+1;
-			
-			 echo '<div id="producto'.($numero).'">
-				<img class="fotocatalogoresponsive" src="/admin/productos/imagen/'.$imagen.'" alt=""/><br>
-				<H6 class="h6class"><a href="producto.php?t='.$fila["nombre"].'">'.$fila["nombre"].'</a></H6>
-				<H11>Valor: $'.$fila["valor"].' CLP</H11>
-			</div>';
-		}
-	
-	?>
-    
-    <div class="clearfix"></div>
-
-	<?php
-				
-		for ($i = (3 + $pagina*6); $i <$result->num_rows && $i<(6 + $pagina * 6); $i++) {
-			$result->data_seek($i);
-			$fila = $result->fetch_assoc();	
-			
-			$conB = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
-			
-			//Se obtiene la primera imagen del producto
-			$sqlB="SELECT * FROM imagen_producto WHERE nombreProducto='".$fila['nombre']."' LIMIT 1";
-							
-			$resultB = mysqli_query($conB,$sqlB);
-			
-			for ($j = 0; $j <$resultB->num_rows; $j++) {
-				$resultB->data_seek($j);
-				$filaB = $resultB->fetch_assoc();
-				
-				$imagen = $filaB["imagen"];
-			}
-			
-			mysqli_close($conB);
-			
-			$numero = $i%3+1;
-			
-			 echo '<div id="producto'.($numero).'">
-				<img class="fotocatalogoresponsive" src="/admin/productos/imagen/'.$imagen.'" alt=""/><br>
-				<H6 class="h6class"><a href="producto.php?t='.$fila["nombre"].'">'.$fila["nombre"].'</a></H6>
-				<H11>Valor: $'.$fila["valor"].' CLP</H11>
-			</div>';
-		}
-	
-	?>    
-	
-	<div class="clearfix"></div>
-	
-	<?php 
-	
-	if($pagina>0){
-		if($categoria==null){
-			echo '<div id="botonmas"><h5>| <a href="tienda.php?p='.($pagina-1).'"><< Anterior</a></h5></div>';
-		}		
-		else
-		{
-			echo '<div id="botonmas"><h5>| <a href="tienda.php?c='.urlencode($categoria).'&p='.($pagina-1).'"><< Anterior</a></h5></div>';
-		}
-	}
-	if(($pagina*6 + 6)<$result->num_rows){
-		if($categoria==null){
-			echo '<div id="botonmas"><h5>| <a href="tienda.php?p='.($pagina+1).'">Siguiente >></a></h5></div>';
-		}
-		else{
-			echo '<div id="botonmas"><h5>| <a href="tienda.php?c='.urlencode($categoria).'&p='.($pagina+1).'">Siguiente >></a></h5></div>';
-		}		
-	}
-	
-	mysqli_close($con); 	
-	?>
-    
-    <div class="clearfix"></div>
-    </div>
-  
-  </div>
-
-	
-
-
-</div>
             
-<div class="clearfix"></div>
-
-
+<div class="clearfix"></div> 
+<div class="mensajeCompra" style="color:black; text-align:center !important">
+    <br>
+    <h1 style="color:black; text-align:center !important">¡Muchas Gracias por Comprar con Nosotros!</h1>
+    <p style="color:black; text-align:center !important">Pronto nos comunicaremos contigo para hacer el envío de tus productos</p>
+</div>
 <footer>
 	<div class="wrap">
      	<div id="colfoot1">
@@ -395,4 +190,3 @@ jQuery(document).ready(function () {
 
 </body>
 </html>
-

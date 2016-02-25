@@ -29,7 +29,7 @@
 					//Se hace la conexion:
 					$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";							
 					
-					$sql="SELECT * FROM productos ORDER BY nombre DESC";
+					$sql="SELECT * FROM productos ORDER BY nombre ASC";
 					
 					$result = mysqli_query($con,$sql);
 					

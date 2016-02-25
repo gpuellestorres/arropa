@@ -137,6 +137,7 @@
 					if($_COOKIE["usuario"]=="arropa"){	
 
 						echo '<li><a href="/admin/usuarios">Usuarios del sistema</a></li>';
+                        echo '<li><a href="/admin/khipu">Datos KHIPU</a></li>';
 
 					}
 

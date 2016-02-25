@@ -1,3 +1,12 @@
+<?php
+
+	session_start();
+
+	$_SESSION['check'] = rand(1,1000000);
+	setcookie("check", $_SESSION['check'], time() + (3600 * 3), "/");
+?>
+
+
 <!doctype html>
 <html>
 <head>
