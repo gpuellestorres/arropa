@@ -112,7 +112,7 @@
     <div class="h10class"><h10>Productos en su Carrito</h10></div>
     
     <div id="parrafotienda">
-  <h11>Suspendisse ut massa rhoncus, hendrerit mauris sed, luctus lacus. Duis auctor lacus nec lectus varius sollicitudin. Morbi posuere massa ut tortor commodo porta ut id elit. Aliquam sed malesuada libero. Suspendisse potenti. Phasellus in ante urna. </h11> 
+  	<h11>Usted está a confirmar la compra de los siguientes productos. </h11> 
     <br><br><br>
     <div class="CSSTableGenerator" >
                 <table >
@@ -161,7 +161,7 @@
 								echo '<tr>
 									<td>'.$_COOKIE["producto".($i+1)].'</td>
 									<td>'.$valor.'</td>
-									<td>'.$_COOKIE["cantidad".($i+1)].' <a href="agregarCarro.php?p='.$_COOKIE["producto".($i+1)].'"><img src="" alt="imagen aumentar"></a> <a href="disminuirCarro.php?p='.$_COOKIE["producto".($i+1)].'"><img src="" alt="imagen disminuir"></a> </td>
+									<td>'.$_COOKIE["cantidad".($i+1)].'</td>
 									<td>'.(int)$_COOKIE["cantidad".($i+1)]*(int)$valor.'</td>
 								</tr>';
 								
@@ -172,7 +172,7 @@
 								echo '<tr>
 									<td>'.$_COOKIE["producto".($i+1)].'</td>
 									<td>$'.$valor.'</td>
-									<td>'.$_COOKIE["cantidad".($i+1)].' <a href="disminuirCarro.php?p='.$_COOKIE["producto".($i+1)].'"><img src="" alt="imagen disminuir"></a> </td>
+									<td>'.$_COOKIE["cantidad".($i+1)].'</td>
 									<td>$'.(int)$_COOKIE["cantidad".($i+1)]*(int)$valor.'</td>
 								</tr>';
 								
@@ -212,12 +212,33 @@
   </div>
 
     
-    <?php
-	if($TotalVenta>0)
-   	echo '<div id="botonmas"><h5><a href="ingresarDatosCompra.php">Comprar</a></h5></div>';
-	?>
-    <div class="clearfix"></div>
-   
+    <form action="realizarVenta.php" method="post">
+    	<label>Nombre:</label>
+    	<input name="nombre" id="nombre" type="text" required />
+    	<br>
+    	<label>Apellido:</label>
+    	<input name="apellido" id="apellido" type="text" required />
+    	<br>
+    	<label>Dirección:</label>
+    	<input name="direccion" id="direccion" type="text" required />
+    	<br>
+    	<label>Ciudad:</label>
+    	<input name="ciudad" id="ciudad" type="text" required />
+    	<br>
+    	<label>Correo:</label>
+    	<input name="correo" id="correo" type="text" required />
+    	<br>
+    	<label>Notas sobre la compra:</label>
+    	<textarea name="notas" id="notas"rows="4"></textarea>
+    	<br>
+	    <?php
+		if($TotalVenta>0)
+		{
+			echo '<button type="submit">Confirmar Compra</button>';
+		}
+		?>
+	</form>
+    <div class="clearfix"></div> 
   
 
   
