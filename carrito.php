@@ -158,10 +158,13 @@
 							mysqli_close($con);
 							
 							if((int)$cantidad>0 && $cantidad>(int)$_COOKIE["cantidad".($i+1)]){
+
+								$NOMBREHTML = urlencode($_COOKIE["producto".($i+1)]);
+
 								echo '<tr>
 									<td>'.$_COOKIE["producto".($i+1)].'</td>
 									<td>'.$valor.'</td>
-									<td>'.$_COOKIE["cantidad".($i+1)].' <a href="agregarCarro.php?p='.$_COOKIE["producto".($i+1)].'"><img src="" alt="imagen aumentar"></a> <a href="disminuirCarro.php?p='.$_COOKIE["producto".($i+1)].'"><img src="" alt="imagen disminuir"></a> </td>
+									<td>'.$_COOKIE["cantidad".($i+1)].' <a href="agregarCarro.php?p='.$NOMBREHTML.'"><img src="" alt="imagen aumentar"></a> <a href="disminuirCarro.php?p='.$NOMBREHTML.'"><img src="" alt="imagen disminuir"></a> </td>
 									<td>'.(int)$_COOKIE["cantidad".($i+1)]*(int)$valor.'</td>
 								</tr>';
 								
@@ -169,10 +172,13 @@
 							}
 							else
 							{
+
+								$NOMBREHTML = urlencode($_COOKIE["producto".($i+1)]);
+
 								echo '<tr>
 									<td>'.$_COOKIE["producto".($i+1)].'</td>
 									<td>$'.$valor.'</td>
-									<td>'.$_COOKIE["cantidad".($i+1)].' <a href="disminuirCarro.php?p='.$_COOKIE["producto".($i+1)].'"><img src="" alt="imagen disminuir"></a> </td>
+									<td>'.$_COOKIE["cantidad".($i+1)].' <a href="disminuirCarro.php?p='.$NOMBREHTML.'"><img src="" alt="imagen disminuir"></a> </td>
 									<td>$'.(int)$_COOKIE["cantidad".($i+1)]*(int)$valor.'</td>
 								</tr>';
 								

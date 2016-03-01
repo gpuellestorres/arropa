@@ -26,56 +26,48 @@
 			$categoria=$fila["categoria"];
 		}
 		mysqli_close($con);
+		//Se obtiene la cantidad de productos actual			
+		$cantidadProductos = (int)$_COOKIE["cantidad"];
 		
-		if($cantidad>0)
+		if($cantidadProductos!=null)
 		{
-			//Se obtiene la cantidad de productos actual			
-			$cantidadProductos = (int)$_COOKIE["cantidad"];
-			
-			if($cantidadProductos!=null)
-			{
-				if($cantidadProductos>0)				
+			if($cantidadProductos>0)				
+			{						
+				$productoEncontrado = false;
+				
+				$cantidadPInt = (int)$cantidadProductos;
+				
+				for($i=0;$i<$cantidadPInt;$i++)
 				{						
-					$productoEncontrado = false;
+					$productoI=$_COOKIE["producto".($i+1)];
 					
-					$cantidadPInt = (int)$cantidadProductos;
-					
-					for($i=0;$i<$cantidadPInt;$i++)
-					{						
-						$productoI=$_COOKIE["producto".($i+1)];
+					if($productoI==$producto){
+						$productoEncontrado = true;
 						
-						if($productoI==$producto){
-							$productoEncontrado = true;
-							
-							$nuevaCantidadProducto = $_COOKIE["cantidad".($i+1)];
-							
-							$nuevaCantidadProductoInt = (int)$nuevaCantidadProducto;
-							$nuevaCantidadProductoInt = $nuevaCantidadProductoInt-1;
-							
-							if($nuevaCantidadProductoInt>0){
-								setcookie("cantidad".($i+1),(string)$nuevaCantidadProductoInt,time()+7200, '/', NULL, 0 );
-							}
-							else
-							{	
-								setcookie("producto".($i+1),$producto,time()-3600, '/', NULL, 0 );
-								setcookie("cantidad".($i+1),(string)$nuevaCantidadProductoInt,time()-3600, '/', NULL, 0 );
-							}
+						$nuevaCantidadProducto = $_COOKIE["cantidad".($i+1)];
+						
+						$nuevaCantidadProductoInt = (int)$nuevaCantidadProducto;
+						$nuevaCantidadProductoInt = $nuevaCantidadProductoInt-1;
+						
+						if($nuevaCantidadProductoInt>0){
+							setcookie("cantidad".($i+1),(string)$nuevaCantidadProductoInt,time()+7200, '/', NULL, 0 );
+						}
+						else
+						{	
+							setcookie("producto".($i+1),$producto,time()-3600, '/', NULL, 0 );
+							setcookie("cantidad".($i+1),(string)$nuevaCantidadProductoInt,time()-3600, '/', NULL, 0 );
 						}
 					}
 				}
 			}
-			
-			header("location:carrito.php");
-			exit;
 		}
-		else
-		{
-			header("location:productos.php?t=$titulo");
-		}	
+		
+		header("location:carrito.php");
+		exit;
 	}
 	else
 	{
-		header("location:producto.php?t=");
+		header("location:carrito.php");
 	}
 
 ?>

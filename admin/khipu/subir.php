@@ -1,5 +1,5 @@
 <?php
-	if($_COOKIE["agregado"]!="si" || $_COOKIE["usuario"]!="arropa"){
+	if($_COOKIE["agregado"]!="si" || ($_COOKIE["usuario"]!="arropa" && $_COOKIE["usuario"]!="Arropa") ){
 	//if($_COOKIE["agregado"]!="si"){
 		header("location:/login");
 		exit;

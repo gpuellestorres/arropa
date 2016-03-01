@@ -9,8 +9,11 @@
 	}
 
 	// Debemos conocer el $receiverId y el $secretKey de ante mano.
-	$receiver_id = include $_SERVER['DOCUMENT_ROOT']."/admin/khipu/obtenerID.php";
-	$secret = include $_SERVER['DOCUMENT_ROOT']."/admin/khipu/obtenerSecret.php";
+	//$receiver_id = include $_SERVER['DOCUMENT_ROOT']."/admin/khipu/obtenerID.php";
+	//$secret = include $_SERVER['DOCUMENT_ROOT']."/admin/khipu/obtenerSecret.php";
+
+	$receiverId = include $_SERVER['DOCUMENT_ROOT']."/admin/khipu/obtenerID.php";
+	$secretKey = include $_SERVER['DOCUMENT_ROOT']."/admin/khipu/obtenerSecret.php";
 	
 	//ini_set('display_errors', 1);
     //ini_set('display_startup_errors', 1);
@@ -71,7 +74,7 @@
 				
 						//Se obtienen los datos del producto
 						$sqlDetalle="INSERT INTO detalle_ventas(ventaID, producto, cantidad, precio) VALUES('$idAleatorio','".$_COOKIE["producto".($i+1)]."','".$_COOKIE["cantidad".($i+1)]."','$valor')";
-										
+
 						$resultDetalle = mysqli_query($conDetalle,$sqlDetalle);
 
 						//Se obtienen los datos del producto
@@ -88,7 +91,7 @@
 			}
 			$IVA = $TotalVenta * 0.19;
 			$TOTAL = $TotalVenta + $IVA;
-			
+
 			//Generamos una nueva venta con khipu
 
 			require  $_SERVER['DOCUMENT_ROOT']. '/vendor/autoload.php';
@@ -96,12 +99,13 @@
 			$configuration = new Khipu\Configuration();
 			$configuration->setReceiverId($receiverId);
 			$configuration->setSecret($secretKey);
-			$configuration->setDebug(false);
+			//$configuration->setDebug(false);
 			// $configuration->setDebug(true);
 
 			$client = new Khipu\ApiClient($configuration);
 			$payments = new Khipu\Client\PaymentsApi($client);
 			$subject  = 'Cobro por Venta de Productos - arropa.org';
+			$usuario = $nombre . " " . $apellido;
 
 			try 
 			{
@@ -116,7 +120,7 @@
 			        , "http://arropa.org/images/logo.png"
 			        , null, null, null
 			        , true
-			        , $nombre . " " . $apellido
+			        , $usuario
 			        , $correo
 			        , true
 			    );

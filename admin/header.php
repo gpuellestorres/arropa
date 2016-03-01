@@ -7,25 +7,21 @@
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 		
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
     <!-- Custom CSS -->
 
     <link href="/css/modern-business.css" rel="stylesheet">
 
-
-
     <!-- Custom Fonts -->
 
-    <link hrefce="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="scripts/jquery-1.3.2.js"></script>
-
-    <script type="text/javascript" src="scripts/jquery-ui-1.7.2.custom.min.js"></script>
-    <link rel="Stylesheet" type="text/css" href="style/jqueryui/ui-lightness/jquery-ui-1.7.2.custom.css" />
+    <link href="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript" src="scripts/jHtmlArea-0.8.js"></script>
     <link rel="Stylesheet" type="text/css" href="style/jHtmlArea.css" />
-    
+        
     <style type="text/css">
         /* body { background: #ccc;} */
         div.jHtmlArea .ToolBar ul li a.custom_disk_button 
@@ -36,56 +32,16 @@
         
         div.jHtmlArea { border: solid 1px #ccc; }
     </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.filestyle/1.1.0/js/bootstrap-filestyle.min.js"> </script>
+
 </head>
 <body style="background-color:#FAFAFA !important">
-    <script type="text/javascript">    
-        // You can do this to perform a global override of any of the "default" options
-        // jHtmlArea.fn.defaultOptions.css = "jHtmlArea.Editor.css";
-
-        $(function() {
-            //$("textarea").htmlarea(); // Initialize all TextArea's as jHtmlArea's with default values
-
-            $("#txtDefaultHtmlArea").htmlarea(); // Initialize jHtmlArea's with all default values
-
-            $("#txtCustomHtmlArea").htmlarea({
-                // Override/Specify the Toolbar buttons to show
-                toolbar: [
-                    ["bold", "italic", "underline", "|", "forecolor"],
-                    ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
-                    ["link", "unlink", "|", "image"],                    
-                    [{
-                        // This is how to add a completely custom Toolbar Button
-                        css: "custom_disk_button",
-                        text: "Save",
-                        action: function(btn) {
-                            // 'this' = jHtmlArea object
-                            // 'btn' = jQuery object that represents the <A> "anchor" tag for the Toolbar Button
-                            alert('SAVE!\n\n' + this.toHtmlString());
-                        }
-                    }]
-                ],
-
-                // Override any of the toolbarText values - these are the Alt Text / Tooltips shown
-                // when the user hovers the mouse over the Toolbar Buttons
-                // Here are a couple translated to German, thanks to Google Translate.
-                toolbarText: $.extend({}, jHtmlArea.defaultOptions.toolbarText, {
-                        "bold": "fett",
-                        "italic": "kursiv",
-                        "underline": "unterstreichen"
-                    }),
-
-                // Specify a specific CSS file to use for the Editor
-                css: "style//jHtmlArea.Editor.css",
-
-                // Do something once the editor has finished loading
-                loaded: function() {
-                    //// 'this' is equal to the jHtmlArea object
-                    //alert("jHtmlArea has loaded!");
-                    //this.showHTMLView(); // show the HTML view once the editor has finished loading
-                }
-            });
-        });
-    </script>
+    
 <nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
 
 	<div class="container-fluid">
@@ -133,14 +89,10 @@
 				<li><a href="/admin/ventas">Registro de ventas</a></li>
 
 				<?php
-
-					if($_COOKIE["usuario"]=="arropa"){	
-
+					if($_COOKIE["usuario"]=="arropa" || $_COOKIE["usuario"]=="Arropa"){	
 						echo '<li><a href="/admin/usuarios">Usuarios del sistema</a></li>';
                         echo '<li><a href="/admin/khipu">Datos KHIPU</a></li>';
-
 					}
-
 				?>
 
 				<li class="dropdown">

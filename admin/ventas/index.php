@@ -45,6 +45,7 @@
 		$Termino = $Termino->format('Y-m-d H:i:s');
 	}
 
+
 	include $_SERVER['DOCUMENT_ROOT']."/admin/header.php";	
 ?>
 
@@ -93,7 +94,7 @@
 					//Se hace la conexion:
 					$con = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 					
-					$sql="SELECT * FROM ventas  WHERE fecha<='$Termino' AND fecha>='$Inicio' ORDER BY fecha ASC";
+					$sql="SELECT * FROM ventas WHERE fecha<='$Termino' AND fecha>='$Inicio' ORDER BY fecha ASC";
 					
 					$result = mysqli_query($con,$sql);
 					
@@ -121,13 +122,7 @@
 	
 </div><!--body-->
 
-<!-- jQuery -->
-<script src="/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
-
-<script>
+<script type="text/javascript">    
 
 	// A $( document ).ready() block.
 	$( document ).ready(function() {
@@ -144,8 +139,6 @@
 
 	    $("#buscar").click(function()
 	    	{
-
-
 	    		window.location = "index.php?Inicio="+$("#inicio").val().replace("/","-").replace("/","-")+"&Termino="+$("#termino").val().replace("/","-").replace("/","-");
 	    	});
 
