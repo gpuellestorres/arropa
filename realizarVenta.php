@@ -89,8 +89,6 @@
 				}
 				
 			}
-			$IVA = $TotalVenta * 0.19;
-			$TOTAL = $TotalVenta + $IVA;
 
 			//Generamos una nueva venta con khipu
 
@@ -111,7 +109,7 @@
 			{
 			    $response = $payments->paymentsPost($subject
 			        , 'CLP'
-			        , $TOTAL
+			        , $TotalVenta
 			        , "Cobro por Venta de Productos - arropa.org"
 			        , null
 			        , null, null

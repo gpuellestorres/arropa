@@ -192,22 +192,8 @@
 			?>
                     <tr>
 						<td colspan="2"></td>
-                        <td><span class="bold"> Total s/IVA</span></td>
+                        <td><span class="bold"> Total</span></td>
                         <td>$<?php echo $TotalVenta; ?></td>
-                        </tr>
-                        
-						<?php 
-						$IVA = $TotalVenta * 0.19;
-						
-						?>
-						<td colspan="2"></td>
-                        <td ><span class="bold">IVA</span></td>
-                        <td >$<?php echo $IVA; ?></td>
-                        </tr>
-                        
-						<td colspan="2"></td>
-                        <td ><span class="bold">Total</span></td>
-                        <td >$<?php echo ($TotalVenta + $IVA); ?></td>
                         </tr>
                 
                 </table><br>

@@ -48,7 +48,7 @@
 		<p><?php echo $id_venta; ?></p>
 		<label>Pagado</label>
 		<p><?php echo $pagado; ?></p>
-		<label>Total (IVA incluido)</label>
+		<label>Total</label>
 		<p><?php echo $total; ?></p>
 	</div>
 
@@ -139,24 +139,12 @@
         <td>$totalProducto</td>
       </tr>";
 	}
-	$IVA = $neto * 0.19;
-	$TOTAL = $neto + $IVA;
 	mysqli_close($con);
 ?>
 				<tr>					
 					<td colspan="2"></td>
-					<td>Total Neto</td>
-					<td><?php echo $neto; ?></td>
-				</tr>
-				<tr>
-					<td colspan="2"></td>
-					<td>IVA</td>
-					<td><?php echo $IVA; ?></td>
-				</tr>
-				<tr>
-					<td colspan="2"></td>
 					<td>Total</td>
-					<td><?php echo $TOTAL; ?></td>
+					<td><?php echo $neto; ?></td>
 				</tr>
 				</tbody>
 		  	</table>
