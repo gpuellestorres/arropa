@@ -147,7 +147,7 @@
 	<li ><a href="tienda.php">Novedades</a></li>
     <?php
 	
-		$conCategorias = new mysqli("localhost", "arropaor", "b0x724xBxV", "arropaor_bd");
+		$conCategorias = include $_SERVER['DOCUMENT_ROOT']."/admin/crearConexion.php";
 		if (!$conCategorias) {
 		  die('No se pudo conectar a la base de datos: ' . mysqli_error($conCategorias));
 		}
